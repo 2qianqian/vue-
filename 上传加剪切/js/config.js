@@ -187,7 +187,8 @@ Vue.component('upload-pictures', {
 	      type: Object,
 	      default: () => {
 	        return {
-	          tips: null
+						tips: null,
+						data: {}
 	        }
 	      }
 	    }, // 多文件
@@ -414,7 +415,8 @@ Vue.component('upload-pictures', {
 	          :name="myfiles"
 	          :disabled="disabled"
 	          :auto-upload="false"
-	          :on-change="changes"
+						:on-change="changes"
+						:data="multiples.data"
 	        >
 	          <template v-if="accept === 'image/jpeg,image/png'">
 	            <div v-if="only" style="display:flex;align-items: center;">
