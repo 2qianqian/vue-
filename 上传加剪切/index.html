@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/element.css">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    单张上传图片不裁切 文件名默认 file
+    <upload-pictures :value="img_url" url="http://localhost//image/ajaxImageUpload" @change="imgChange"></upload-pictures>
+    单张上传随意裁切或者不剪切 文件名设置为files
+    <upload-pictures :value="img_url" myfiles="files" url="http://localhost//image/ajaxImageUpload" crop @change="imgChange"></upload-pictures>
+    单张上传图片大小为690*300 disabled禁止上传
+    <upload-pictures :value="img_url" disabled url="http://localhost//image/ajaxImageUpload" :multiple="{  tips: '图片支持大小690*300' }" @change="imgChange"></upload-pictures>
+    多张上传图片大小为690*300
+    <upload-pictures :value="imgList" url="http://localhost//image/ajaxImageUpload" :only="false" :multiple="{  tips: '图片支持大小690*300' }" @change="listChange"></upload-pictures>
+  </div>
+</body>
+<script type="text/javascript" src="./js/vue.min.js"></script>
+<script type="text/javascript" src="./js/config.js"></script>
+<script type="text/javascript" src="./js/element.js"></script>
+<script>
+  /**
+   * value 图片链接
+   * myfiles 文件上传名
+   * disabled 只读
+   * crop 知道裁切
+   * :only="false" 多文件上传，但需要value值为数组
+   * url 上传路径
+   * multiple 提示文字 如果有尺寸则需要裁切（h*w）
+  */
+  new Vue({
+    el: '#app',
+    data(){
+      return {
+        // 图片链接单张上传
+        img_url: '',
+        // 多张上传
+        imgList: []
+      }
+    },
+    methods: {
+      // 获取到上传的单张图片
+      imgChange(res){
+        console.log(res)
+      },
+      // 获取到上传的多张图片
+      listChange(){
+        console.log(res)
+      }
+    }
+  })
+</script>
+</html>
